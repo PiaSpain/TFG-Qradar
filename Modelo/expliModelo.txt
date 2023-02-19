@@ -1,0 +1,4 @@
+Gestiona todo lo relacionado con la información 
+y la iteración con los datos de nuestra aplicación. 
+
+Todas las peticiones de acceso a los datos pasará por esta capa.

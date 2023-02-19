@@ -1,0 +1,3 @@
+Es la capa que nos mostrará la información formateada. 
+
+También desde dónde el usuario puede solicitar más información.

@@ -1,0 +1,3 @@
+Une la vista y el modelo. 
+El usuario solicitará información por medio de la vista y esta hará la petición al controlador. 
+Posteriormente, este, realizará la petición al modelo.
