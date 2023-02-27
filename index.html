@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Registro</title>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./Vista/css/index.css">
+</head>
+<!-- https://tutorialzine.com/2016/11/freebie-3-elegant-bootstrap-forms -->
+
+<body>
+    <div  class="container" >
+        <div class="contenido">
+            <div class="col-md-8 " id="back-qradar">
+                <img class="img-responsive" src="./Vista/css/notebook-chill.jpg">
+            </div>
+            <div class="col-md-4 " id="log-in-form">
+                <form class="form" action="Vista/login.php" method="post">
+                    <div class="form-group">
+                        <h1>Username </h1>
+                        <input type="text" class="form-control" name="dni" id="username">
+                    </div>
+                    <div class="form-group">
+                        <h1>Password </h1>
+                        <input type="password" class="form-control" name="pass" id="pwd">
+                    </div>
+                    <div class="form-group form-group-btn">
+                        <button type="submit" class="btn btn-success btn-lg">Login</button>
+                    </div>
+                    <div class="clearfix"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

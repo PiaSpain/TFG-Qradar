@@ -28,6 +28,30 @@
         private function set_names() { 
             return $this->conec->query("SET NAMES 'utf8'"); 
         }
+        public function ComprueboUsu($tabla,$campo1, $dato1,$campo2,$dato2){
+            try {
+                //prepara la consulta SQL
+                $sentencia ="select * from ".$tabla." where ".$campo1."='$dato1'"." and ".$campo2."='$dato2'";
+
+                //ejecutamos una query para comprobar si el dato se encuentra en la bbdd
+                
+                $sql = $this->conec->query($sentencia);
+                // captamos los posibles errores
+                $this->conec->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                //ejecutamos la consulta sql
+                $sql->execute();
+                //Contamos el número de flas devueltas en la consulta sql
+                $total =$sql->rowCount();
+                if($total ==1){
+                    //Si devuelve una fila el dato se encuentra en la bbddd
+                    return true;
+                }else{
+                    return false;
+                }
+              } catch (PDOException  $e) {
+                echo "<h3>Failed: </h3>" ."<h3>". $e->getMessage()."</h3>";
+              }
+        }
     
     }
 
