@@ -1,0 +1,16 @@
+CREATE TABLE `logs` (
+`id` int(5) NOT NULL,
+`name` varchar(25) NOT NULL,
+`logSourceType` varchar(25) NOT NULL,
+`creationDate` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+`LastEvent` TIMESTAMP NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+`Enabled` BIT NOT NULL,
+PRIMARY KEY (`id`)
+);
+
+insert into logs values
+('15272', 'A10@10.60.0.38','Custom A10 Networks',NOW(),NOW(),1),
+('24265', 'A10Neteork@192.168.244.31', 'Custom A10 Networks',NOW(),NOW(),1),
+('9732', 'ACK Alert @ Cerved,'Londres','17:50','17:55','20:30'),
+('9892', 'Roma', 'Vergamo','14:30','14:25','15:30'),
+('24120', 'Miami', 'Lima','14:30','14:25','15:30');
