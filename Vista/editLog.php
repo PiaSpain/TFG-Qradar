@@ -42,7 +42,7 @@
                             <th>Log Source Type</th>
                         </tr>
                         <tr>
-                            <!-- El número de vuelo no puede ser modificable-->
+                            <!-- El ID no puede ser modificado-->
                             <td> <?php echo $_SESSION['id'] ?> </td>
                             <td> <input type="text" name="name" placeholder="<?php echo $result['name'] ?>"> </td>
                             <td> <input type="text" name="type" placeholder="<?php echo $result['logSourceType'] ?>"> </td>
@@ -53,9 +53,9 @@
                             <th>Enabled</th> 
                         </tr>
                         <tr>
-                            <td> <input type="text" name="creationDate" placeholder="<?php echo$result['creationDate']?>"> </td>
-                            <td> <input type="text" name="last" placeholder="<?php echo $result['LastEvent'] ?>"> </td>
-                            <td> <input type="text" name="enabled" placeholder="<?php echo $result['Enabled'] ?>"> </td>
+                            <td> <input type="datetime" name="creationDate" placeholder="<?php echo$result['creationDate']?> "readonly="readonly"> </td>
+                            <td> <input type="datetime" name="last" placeholder="<?php echo $result['LastEvent'] ?>" value="<?php echo date("Y-m-d H:i:s");?>"  readonly="readonly"> </td>
+                            <td> <input type="checkbox" name="enabled" placeholder="<?php echo $result['Enabled'] ?>"> </td>
                         </tr>
                         
 

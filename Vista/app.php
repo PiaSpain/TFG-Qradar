@@ -81,13 +81,15 @@ require "layout/header.php"
         </div>
         <div class="col-md-4">
             <!-- FORMULARIO envio de nuevo vuelo mediante post -->
-            <form action="addFlight.php" method="POST">
-                <input type="submit" class="btn btn-success btn-block" name="addFlight" value="Añadir nuevo vuelo">
+            <form action="addLog.php" method="POST">
+                <input type="submit" class="btn btn-success btn-block" name="addLog" value="Añadir nuevo vuelo">
             </form>
         </div>
     </div>
 </main>
 
-<?php 
+
+<?php
+#require "modal/ventana.php"  
 require "layout/footer.php" 
 ?>

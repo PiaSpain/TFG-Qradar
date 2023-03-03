@@ -2,15 +2,15 @@
     include("../Modelo/sesiones.php");
     require_once("../controlador/controlador.php");
 
-    //Iniciamos sesión para el mensaje de confirmación una vez añadido el vuelo. 
-    // - Para almacenar la variable de nvuelo a editar
+    //Iniciamos sesión para el mensaje de confirmación una vez añadido el ID. 
+    // - Para almacenar la variable de nID a editar
 
     //Comprobamos si hemos accedido a este documento php por saveFlight.php
     if(isset($_POST['Guardar'])){
         // Comprobamos que se han rellenado todos los campos del formulario
         if(empty($_POST['id'])|| empty($_POST['name'])||
             empty($_POST['type'])||empty($_POST['creationDate'])||
-            empty($_POST['last'])||empty($_POST['enabled'])){
+            empty($_POST['last'])){
                 $_SESSION['message'] = 'Log No añadido -- Tienen que estar todos los campos completados';
                 $_SESSION['message_type'] = 'danger';
         }else {
@@ -20,9 +20,14 @@
             $_SESSION['type']= $_POST['type'];
             $_SESSION['creationDate']= $_POST['creationDate'];
             $_SESSION['last']= $_POST['last'];
-            $_SESSION['enabled']= $_POST['enabled'];
+            if (is_null($_POST['enabled'])){
+		    $_SESSION['enabled'] = '0';
+	        }else{
+            $_SESSION['enabled']= '0';
+            }
+           # $_SESSION['enabled']= $_POST['enabled'];
 
-
+            require_once("../controlador/controlador.php");
             //Creamos la variable que le dará nombre a la tabla para comprobar datos
             $_SESSION['tabla'] = 'logs';
             
@@ -35,7 +40,7 @@
                
                 if($logExit){
                 #Guardamos un mensaje y el color del mensaje para utilizarlo con bootstrap
-                $_SESSION['message'] = 'Log NO añadido -- El número de vuelo no puede estar repetido'.$_SESSION['id'] ;
+                $_SESSION['message'] = 'Log NO añadido -- El número de ID no puede estar repetido'.$_SESSION['id'] ;
                 $_SESSION['message_type'] = 'danger';
 
                 }else{
@@ -46,11 +51,11 @@
                     //Comprobamos si la inserción en la tabla ha sido satisfactoria
                 if($logExit){
                    //Guardamos un mensaje y el color del mensaje para utilizarlo con bootstrap
-                    $_SESSION['message'] = 'Vuelo NO añadido -- La consulta a la BBDD ha fallado';
+                    $_SESSION['message'] = 'ID NO añadido -- La consulta a la BBDD ha fallado';
                     $_SESSION['message_type'] = 'danger';
                  } else{
                     //Guardamos un mensaje y el color del mensaje para utilizarlo con bootstrap
-                    $_SESSION['message'] = 'Vuelo Añadido';
+                    $_SESSION['message'] = 'ID Añadido';
                     $_SESSION['message_type'] = 'success';
                  }
                 endif;
@@ -63,7 +68,7 @@
 
         $logAeditar=$_SESSION['id'];
         // Comprobamos que si se han rellenado los campos del formulario, en caso contrario, mantenemos los valores
-        // esto son los name del formulario menos el nVuelo que no puede ser modificado por ser clave primario
+        // esto son los name del formulario menos el nID que no puede ser modificado por ser clave primario
         
         #Pedimos todos los datos de la tabla
         //Accedemos al controlador
@@ -75,7 +80,7 @@
             $results=logController::{$metodo}('id',$logAeditar);
 
 
-        // $results tiene todas los vuelos guardads, Con el foreach los recorremos para poder pintarlos
+        // $results tiene todas los IDs guardads, Con el foreach los recorremos para poder pintarlos
         // Con el primer bucle foreach obtenemos el valor de las key del array multidimensional $results
        foreach ($results as $key => $dato)
         // Con este segundo bucle foreach obtenemos el valor de las keys
@@ -85,8 +90,8 @@
         }
         if (empty($_POST['type'])) {$logSourceType =$result['logSourceType'];} else{$logSourceType =$_POST['type'];
         }
-        if (empty($_POST['creationDate'])){$creationDate = $result['creationDate'];} else{$creationDate =  $_POST['creatonDate'];
-        }
+        if (empty($_POST['creationDate'])){$creationDate = $result['creationDate'];};
+        
         if (empty($_POST['last'])){$LastEvent =$result['LastEvent'];}else{$LastEvent =$_POST['last'];
         } 
         if (empty($_POST['enabled'])){$Enabled=$result['Enabled'];} else{$Enabled=$_POST['enabled'];

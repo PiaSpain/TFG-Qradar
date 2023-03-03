@@ -52,6 +52,28 @@
                 echo "<h3>Failed: </h3>" ."<h3>". $e->getMessage()."</h3>";
               }
         }
+        public function ComprueboDato($tabla,$campo, $dato){
+            try { 
+                //ejecutamos una query para comprobar si el dato se encuentra en la bbdd
+                $sentencia ="select * from ".$tabla." where ".$campo."='$dato'";
+                $sql = $this->conec->query($sentencia);
+                // captamos los posibles errores
+                $this->conec->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                //ejecutamos la consulta sql
+                $sql->execute();
+                //Contamos el número de flas devueltas en la consulta sql
+                $total =$sql->rowCount();
+                if($total ==1){
+                    //Si devuelve una fila el dato se encuentra en la bbddd
+                    return true;
+                }else{
+                    return false;
+                }
+              } catch (PDOException  $e) {
+                echo "<h3>Failed: </h3>" ."<h3>". $e->getMessage()."</h3>";
+              }
+        }
+
 
         public function muestroDatos($condicion,$datoMuestra){
             #$condicion = id
@@ -88,17 +110,17 @@
             }
         }
 
-        public function saveLog($id,$name,$des,$creatonDate,$LastEvent,$Enabled){
+        public function saveLog($id,$name,$logSourceType,$creationDate,$LastEvent,$Enabled){
             try {
                 //prepara la consulta SQL
-                $sentencia  = $this->conec -> prepare("insert into logs (id,name,logSourceType,creatonDate,LastEvent,Enabled) 
-                values (:id,:name,:logSourceType,:creatonDate,:LastEvent,:Enabled)");
+                $sentencia  = $this->conec -> prepare("insert into logs (id,name,logSourceType,creationDate,LastEvent,Enabled) 
+                values (:id,:name,:logSourceType,:creationDate,:LastEvent,:Enabled)");
                 // captamos los posibles errores
-                $this->conec->sLastEventttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                //$this->conec->sLastEventttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $sentencia ->bindParam(':id', $id);
                 $sentencia ->bindParam(':name', $name);
                 $sentencia ->bindParam(':logSourceType', $logSourceType);
-                $sentencia ->bindParam(':creatonDate', $creatonDate);
+                $sentencia ->bindParam(':creationDate', $creationDate);
                 $sentencia ->bindParam(':LastEvent', $LastEvent);
                 $sentencia ->bindParam(':Enabled', $Enabled);
 
@@ -124,7 +146,7 @@
                 // (1) Definir SQL
                 $sentencia =  $this->conec ->prepare("delete from logs where id = :id");
                 // captamos los posibles errores
-                $this->conec->sLastEventttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                //$this->conec->sLastEventttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 // (2) Asignar valores a los parametros
                 $sentencia->bindParam(':id', $id);
                 // (3) Ejecutar SQL
