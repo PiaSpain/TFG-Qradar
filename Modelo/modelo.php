@@ -13,11 +13,11 @@
             try{
                 $this->conec=new PDO("mysql:host=$servername;dbname=$dbname",$username,$password);
                 //Ccomprobamos que la conexión con la creacion de las excepciones, si se producen
-                // PDO::sLastEventttribute — Establece un atributo
+                // PDO::setAttribute — Establece un atributo
                 // PDO::ATTR_ERRMODE: - Reporte de errores.
                 // ERRMODE_EXCEPTION - Además de establecer el código de error, PDO lanzará una PDOException y 
                 // establecerá sus propiedades para reflejar el error y la información del mismo.
-                //$this->conec-> sLastEventttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+                $this->conec-> setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
         
             }catch(PDOException $e){
                 echo "<h3>Error fallo en la conexión </h3>".$e->getMessage();
@@ -37,7 +37,7 @@
                 
                 $sql = $this->conec->query($sentencia);
                 // captamos los posibles errores
-                $this->conec->sLastEventttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $this->conec->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 //ejecutamos la consulta sql
                 $sql->execute();
                 //Contamos el número de flas devueltas en la consulta sql
@@ -87,7 +87,7 @@
                     $sql = "select * from logs where ".$condicion."='$datoMuestra'";
                 }
                 // captamos los posibles errores
-               // $this->conec->sLastEventttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $this->conec->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 //Ejecuta una sentencia preparada 
                 $datos = $this->conec->query($sql);
                 //Recorremos todos los datos obtenido de la consulta y lo almacenamos en un array a través de un bucle while
@@ -116,7 +116,7 @@
                 $sentencia  = $this->conec -> prepare("insert into logs (id,name,logSourceType,creationDate,LastEvent,Enabled) 
                 values (:id,:name,:logSourceType,:creationDate,:LastEvent,:Enabled)");
                 // captamos los posibles errores
-                //$this->conec->sLastEventttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $this->conec->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $sentencia ->bindParam(':id', $id);
                 $sentencia ->bindParam(':name', $name);
                 $sentencia ->bindParam(':logSourceType', $logSourceType);
@@ -146,7 +146,7 @@
                 // (1) Definir SQL
                 $sentencia =  $this->conec ->prepare("delete from logs where id = :id");
                 // captamos los posibles errores
-                //$this->conec->sLastEventttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $this->conec->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 // (2) Asignar valores a los parametros
                 $sentencia->bindParam(':id', $id);
                 // (3) Ejecutar SQL
@@ -170,7 +170,7 @@
                 $sentencia  =  $this->conec -> prepare("update logs set name=:name,
                 logSourceType=:logSourceType,creationDate=:creationDate,LastEvent=:LastEvent,Enabled=:Enabled where id = '$logAeditar'");
                  // captamos los posibles errores
-                //$this->conec->sLastEventttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $this->conec->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $sentencia ->bindParam(':name', $name);
                 $sentencia ->bindParam(':logSourceType', $logSourceType);
                 $sentencia ->bindParam(':creationDate', $creationDate);

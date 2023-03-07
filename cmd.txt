@@ -1,9 +1,14 @@
+cd /xampp/mysql/bin
+mysql -u root -p
+
+create database pro_tfg;
+
 CREATE TABLE `logs` (
 `id` int(5) NOT NULL,
 `name` varchar(25) NOT NULL,
 `logSourceType` varchar(25) NOT NULL,
-`creationDate` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-`LastEvent` TIMESTAMP NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+`creationDate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ,
+`LastEvent` DATETIME NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP ,
 `Enabled` BIT NOT NULL,
 PRIMARY KEY (`id`)
 );
@@ -11,6 +16,19 @@ PRIMARY KEY (`id`)
 insert into logs values
 ('15272', 'A10@10.60.0.38','Custom A10 Networks',NOW(),NOW(),1),
 ('24265', 'A10Neteork@192.168.244.31', 'Custom A10 Networks',NOW(),NOW(),1),
-('9732', 'ACK Alert @ Cerved,'Londres','17:50','17:55','20:30'),
-('9892', 'Roma', 'Vergamo','14:30','14:25','15:30'),
-('24120', 'Miami', 'Lima','14:30','14:25','15:30');
+('9732', 'ACK Alert @ Cerved CMGVS00CO2','ACK ALERT',NOW(),NOW(),0),
+('9892', 'FortiGate@10.10.10.1', 'Fortinet',NOW(),NOW(),1),
+('9782', 'FortiGate@10.20.1.1', 'Fortinet',NOW(),NOW(),1),
+('7792', 'ACK ALERT@192.6.2.135', 'AWS WAF',NOW(),NOW(),1),
+('24265', 'ACK ALERT@192.168.244.31', 'Forcepoint V Series',NOW(),NOW(),0)
+('15637', 'LucartDNS@192.168.130.14', 'DNS Debug',NOW(),NOW(),1)
+('18675', 'Microsoft Windows Security@sv3330.logista.local', 'MWS',NOW(),NOW(),0),
+('18272', 'A10@10.60.0.38','Custom A10 Networks',NOW(),NOW(),1),
+('74275', 'A10Neteork@192.168.244.31', 'Custom A10 Networks',NOW(),NOW(),1),
+('1732', 'ACK Alert @ Cerved CMGVS00CO2','ACK ALERT',NOW(),NOW(),0),
+('6892', 'FortiGate@10.10.10.1', 'Fortinet',NOW(),NOW(),1),
+('5782', 'FortiGate@10.20.1.1', 'Fortinet',NOW(),NOW(),1),
+('3792', 'ACK ALERT@192.6.2.135', 'AWS WAF',NOW(),NOW(),1),
+('14265', 'ACK ALERT@192.168.244.31', 'Forcepoint V Series',NOW(),NOW(),0),
+('65637', 'LucartDNS@192.168.130.14', 'DNS Debug',NOW(),NOW(),1),
+('78675', 'Microsoft Windows Security@sv3330.logista.local', 'MWS',NOW(),NOW(),0);

@@ -1,0 +1,49 @@
+body{
+    background-color: #f4f4f4;
+}
+
+.container2{
+    padding-left: 5%;
+}
+
+.filter{
+    margin: 1em;
+    padding: 1em;
+    position: relative;
+    height: fit-content;
+    width: fit-content;
+}
+
+/*Posicionar icono lupa dentro del placeholder*/
+div.search{
+    margin: 1em;
+    position: relative;
+}
+input.form-control {
+    padding: 1em 1em 1em 3em;
+}
+    
+i.fa-search {
+    position: absolute;
+    top: 2px;
+    opacity: 0.6;
+    padding: 1em;
+    display: flex;
+    align-items: center;
+}
+
+
+.verticalmenu {
+    margin-top: 15px;
+    height: 680px;
+    overflow-y: scroll;
+}
+.tabla-logs{
+    height: 550px;
+}
+@media screen and (max-width: 900px) {
+    .verticalmenu {
+        display: none;
+    }
+
+}
