@@ -55,7 +55,21 @@
                         <tr>
                             <td> <input type="datetime" name="creationDate" placeholder="<?php echo$result['creationDate']?> "readonly="readonly"> </td>
                             <td> <input type="datetime" name="last" placeholder="<?php echo $result['LastEvent'] ?>" value="<?php echo date("Y-m-d H:i:s");?>"  readonly="readonly"> </td>
-                            <td> <input type="checkbox" name="enabled" placeholder="<?php echo $result['Enabled'] ?>"> </td>
+                             <?php if ($result['Enabled']){?>
+                                    <td >
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" name="enabled1" checked>
+                                            <label class="form-check-label">On</label>
+                                        </div>
+                                    </td>
+                                    <?php }else{?>
+                                    <td>
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox"  name="enabled">
+                                            <label class="form-check-label">Off</label>
+                                        </div>
+                                    </td>
+                                    <?php };?>
                         </tr>
                         
 

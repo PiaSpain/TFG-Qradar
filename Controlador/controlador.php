@@ -21,7 +21,7 @@
             if($usuExit ){
             //Datos correctos accedemos a la app
             //mostramos la vista con los datos obtenidos
-            header ("Location:../Vista/app.php");    
+            header ("Location:../Vista/LogSources.php");    
 
             } else{
                 // Algún dato no es correcto, nos mantenemos en la página del login
@@ -64,7 +64,7 @@
             return $mostramos;
         }
 
-        //AÑADIMOS VUELO
+        //AÑADIMOS LOG
         static function add(){
             $conec = new Log(); // esta es la conexión
 
@@ -82,7 +82,7 @@
                 header ("Location:./Vista/app.php");  
             }
         }
-        //AÑADIMOS VUELO
+        //AÑADIMOS LOG
         static function edit($name,$logSourceType,$creationDate,$LastEvent,$Enabled,$logAeditar){
             $conec = new Log(); // esta es la conexión
             $edit= $conec ->editLog($name,$logSourceType,$creationDate,$LastEvent,$Enabled,$logAeditar);
@@ -94,13 +94,13 @@
                 header ("Location:./Vista/app.php");  
             }else{
                 //Guardamos un mensaje y el color del mensaje para utilizarlo con bootstrap
-                $_SESSION['message'] = 'Vuelo NO Modificado -- La consulta a la BBDD ha fallado';
+                $_SESSION['message'] = 'LOG NO Modificado -- La consulta a la BBDD ha fallado';
                 $_SESSION['message_type'] = 'danger';
                 header ("Location:./Vista/app.php");  
             }
         }
 
-        //BORRAMO LOG
+        //BORRAMOS LOG
         static function delete(){
             $conec = new Log(); // esta es la conexión
     
@@ -108,7 +108,7 @@
             //Chequeamos que se ha eliminado correctamente
             if($delete){
                 //Guardamos un mensaje y el color del mensaje para utilizarlo con bootstrap
-                $_SESSION['message'] = 'Log-Eliminado';
+                $_SESSION['message'] = 'Log ->'.$_SESSION['id'].'   Eliminado';
                 $_SESSION['message_type'] = 'danger';
                 #header ("Location:app.php");  
                 header ("Location:app.php"); 

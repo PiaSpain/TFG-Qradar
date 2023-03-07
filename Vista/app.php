@@ -183,6 +183,5 @@ require "layout/header.php"
 
 
 <?php
-#require "modal/ventana.php"  
 require "layout/footer.php" 
 ?>

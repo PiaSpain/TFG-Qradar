@@ -20,11 +20,12 @@
             $_SESSION['type']= $_POST['type'];
             $_SESSION['creationDate']= $_POST['creationDate'];
             $_SESSION['last']= $_POST['last'];
-            if (is_null($_POST['enabled'])){
-		    $_SESSION['enabled'] = '0';
+            if (empty($_POST['enabled1'])){
+		        $_SESSION['enabled'] = '0';
 	        }else{
-            $_SESSION['enabled']= '0';
+                 $_SESSION['enabled'] = '1';
             }
+
            # $_SESSION['enabled']= $_POST['enabled'];
 
             require_once("../controlador/controlador.php");
@@ -55,7 +56,7 @@
                     $_SESSION['message_type'] = 'danger';
                  } else{
                     //Guardamos un mensaje y el color del mensaje para utilizarlo con bootstrap
-                    $_SESSION['message'] = 'ID Añadido';
+                    $_SESSION['message'] = 'ID -> '. $_SESSION['id']. ' Añadido';
                     $_SESSION['message_type'] = 'success';
                  }
                 endif;
