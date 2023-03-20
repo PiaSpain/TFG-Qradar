@@ -94,7 +94,7 @@ require "layout/header.php"
                     <div class="search col-sm-10">
                         <form action="addLog.php" method="POST" class="d-flex">
                             <i class="fas fa-search"></i>
-                            <input class="form-control me-2 border-2 border-primary w-75" type="search" placeholder=" Search" aria-label="Search">
+                            <input class="form-control me-2 border-2 border-primary w-75" type="search" placeholder=" Search by name, description or log source indentifier" aria-label="Search">
                             <button class="btn text-white bg-primary" type="submit" name="addLog"  value="Add new Log">+ New Log source</button>
                             <button class="btn text-dark bg-primary" type="submit" name="addLog"  value="Add new Log"><i class="fas fa-caret-down"></i></button>
                         </form>
