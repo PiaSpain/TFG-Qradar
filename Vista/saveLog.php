@@ -8,8 +8,11 @@
     //Comprobamos si hemos accedido a este documento php por saveFlight.php
     if(isset($_POST['Guardar'])){
         // Comprobamos que se han rellenado los campos sensibles del formulario
-        if(empty($_POST['id'])){
+        if(empty($_POST['id']) ){
                 $_SESSION['message'] = 'Log No añadido -- Tienen que estar el ID completado';
+                $_SESSION['message_type'] = 'danger';
+        }else if(!(is_numeric ($_POST['id'])) || strlen($_POST['id']) > 5){
+                $_SESSION['message'] = 'Log No añadido -- Tienen que estar el ID sólo puede tener hasta 5 números';
                 $_SESSION['message_type'] = 'danger';
         }else if( $_POST['name']=='name'){
                 $_SESSION['message'] = 'Log No añadido -- Tienen que seleccionar un campo de la lista Name';
