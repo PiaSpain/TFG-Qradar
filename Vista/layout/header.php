@@ -22,6 +22,6 @@
         <div class="container">
             <a href="app.php" class="navbar-brand text-dark"><i class="fas fa-bars"></i>     IBM QRadar Log Source Management</a>
             <!--Pasmos mediante get cerramos para comprobar en el archivo cerrar.php que hemos accedido por este enlace -->
-            <a href="../Modelo/cerrar.php?cerramos" class="navbar-brand text-dark">Usu: <?=@$_SESSION['dni'];?> CERRAR SESIÓN</a>
+            <a href="../Modelo/cerrar.php?cerramos" class="navbar-brand text-dark">Usu: <?=@$_SESSION['usu'];?> CERRAR SESIÓN</a>
         </div>
     </nav>

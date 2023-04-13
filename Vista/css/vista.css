@@ -13,6 +13,31 @@ body{
     height: fit-content;
     width: fit-content;
 }
+/* Fijar Cabecera tabla*/
+.tabla-logs {
+    max-height: 300px;
+    overflow: auto;
+    border: 1px solid;
+    display: inline-block;
+}
+
+.tabla-logs > table {
+    position: relative;
+}
+
+.tabla-logs > thead >  tr > th {
+    position: sticky;
+    top: 0;
+    background: white;
+    z-index: 1;
+    border-bottom: 2px solid;
+background-color: yellow;
+}
+
+th,
+td {
+    padding: 1rem;
+}
 
 /*Posicionar icono lupa dentro del placeholder*/
 div.search{

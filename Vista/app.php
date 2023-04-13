@@ -35,9 +35,11 @@ require "layout/header.php"
                     <p class="fw-bold">Enabled (2)</p>
                     <input class="form-check-input" type="checkbox" /> Yes <br />
                     <input class="form-check-input" type="checkbox" /> No <br />
-                    <p class="fw-bold">Log Surce Type (181)</p>
+                    <p class="fw-bold">Log Source Type (181)</p>
                     <input class="form-check-input" type="checkbox" /> Microsoft Windows Security <br />
                     <input class="form-check-input" type="checkbox" /> Aruba Mobility Controller <br />
+                    <input class="form-check-input" type="checkbox" /> Custom A10 Networks <br /> 
+                    <input class="form-check-input" type="checkbox" /> ACK ALERT <br /> 
                     <input class="form-check-input" type="checkbox" /> Linux OS <br />
                     <input class="form-check-input" type="checkbox" /> WinCollect <br />
                     <input class="form-check-input" type="checkbox" /> Cisco IOS <br />
@@ -79,7 +81,7 @@ require "layout/header.php"
                     <p class="fw-bold">Internal (2)</p>
                     <input class="form-check-input" type="checkbox" /> Yes <br />
                     <input class="form-check-input" type="checkbox" /> No <br />
-                    <p class="fw-bold">Deployed (2)</p>
+                    <p class="fw-bold">Enabled (2)</p>
                     <input class="form-check-input" type="checkbox" /> Yes <br />
                     <input class="form-check-input" type="checkbox" /> No <br />
                 </div>
@@ -106,8 +108,8 @@ require "layout/header.php"
                 </div>
                                 
                 <!-- FORMULARIO envio de nuevo vuelo mediante post -->
-                <div class="table-responsive col-11 tabla-logs">
-                    <table class="table table-bordered table-hover ">
+                <div class="table-responsive col-11 tabla-logs" >
+                    <table class="table table-bordered table-hover" >
                         <!-- CABECERA -->
                         <thead class="table-secondary  text-black">
                             <!-- Título -->
@@ -116,9 +118,12 @@ require "layout/header.php"
                                 <th>ID</th>
                                 <th>Name</th>
                                 <th>Log Source Type</th>
+                                <th>Protocol Type</th>
+                                <th>Extension</th>
+                                <th>Target Event Collector</th>
                                 <th>Creation Date</th> 
-                                <th>Last Event</th> 
-                                <th>Enable</th>
+                                <th>Last Event</th>
+                                <th>Enabled</th>
                                 <th>Edit / Delete</th>
                             </tr>
                         </thead>
@@ -145,9 +150,13 @@ require "layout/header.php"
                                     <td><?php echo $result['id'] ?></td>
                                     <td><?php echo $result['name']?></td>
                                     <td><?php echo $result['logSourceType']?></td>
+                                    <td><?php echo $result['protocolType']?></td>
+                                    <td><?php echo $result['extension']?></td>
+                                    <td><?php echo $result['targeteventcollector']?></td>
                                     <td><?php echo $result['creationDate']?></td>
-                                    <td><?php echo $result['LastEvent']?></td>
-                                    <?php if ($result['Enabled']){?>
+                                    <td><?php echo $result['lastEvent']?></td>
+                                    
+                                    <?php if ($result['enabled']){?>
                                     <td >
                                         <div class="form-check form-switch">
                                             <input class="form-check-input" type="checkbox" checked>

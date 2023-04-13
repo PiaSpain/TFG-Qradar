@@ -4,7 +4,7 @@
             require_once("../controlador/controlador.php");
             if($_POST){ // Detecta su hay un envío
 
-            $_SESSION['dni'] =$_POST['dni'];
+            $_SESSION['usu'] =$_POST['usu'];
             $_SESSION['pass'] =$_POST['pass'];
             //Creamos la variable que le dará nombre a la tabla para comprobar datos
             $_SESSION['tabla'] = 'usuarios';

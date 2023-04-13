@@ -110,19 +110,22 @@
             }
         }
 
-        public function saveLog($id,$name,$logSourceType,$creationDate,$LastEvent,$Enabled){
+        public function saveLog($id,$name,$logSourceType,$protocolType,$extension,$targeteventcollector,$creationDate,$lastEvent,$enabled){
             try {
                 //prepara la consulta SQL
-                $sentencia  = $this->conec -> prepare("insert into logs (id,name,logSourceType,creationDate,LastEvent,Enabled) 
-                values (:id,:name,:logSourceType,:creationDate,:LastEvent,:Enabled)");
+                $sentencia  = $this->conec -> prepare("insert into logs (id,name,logSourceType,protocolType,extension,targeteventcollector,creationDate,lastEvent,enabled) 
+                values (:id,:name,:logSourceType,:protocolType,:extension,:targeteventcollector,:creationDate,:lastEvent,:enabled)");
                 // captamos los posibles errores
                 $this->conec->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $sentencia ->bindParam(':id', $id);
                 $sentencia ->bindParam(':name', $name);
                 $sentencia ->bindParam(':logSourceType', $logSourceType);
+                $sentencia ->bindParam(':protocolType', $protocolType);
+                $sentencia ->bindParam(':extension', $extension);
+                $sentencia ->bindParam(':targeteventcollector', $targeteventcollector);
                 $sentencia ->bindParam(':creationDate', $creationDate);
-                $sentencia ->bindParam(':LastEvent', $LastEvent);
-                $sentencia ->bindParam(':Enabled', $Enabled);
+                $sentencia ->bindParam(':lastEvent', $lastEvent);
+                $sentencia ->bindParam(':enabled', $enabled);
 
                 //Ejecuta una sentencia preparada 
                 $sentencia -> execute();
@@ -164,18 +167,21 @@
     
         } 
 
-        public function editLog($name,$logSourceType,$creationDate,$LastEvent,$Enabled,$logAeditar){
+        public function editLog($name,$logSourceType,$protocolType,$extension,$targeteventcollector,$creationDate,$lastEvent,$enabled,$logAeditar){
             try{
                 //prepara la consulta SQL
                 $sentencia  =  $this->conec -> prepare("update logs set name=:name,
-                logSourceType=:logSourceType,creationDate=:creationDate,LastEvent=:LastEvent,Enabled=:Enabled where id = '$logAeditar'");
+                logSourceType=:logSourceType,protocolType=:protocolType,extension=:extension,targeteventcollector=:targeteventcollector,creationDate=:creationDate,lastEvent=:lastEvent,enabled=:enabled where id = '$logAeditar'");
                  // captamos los posibles errores
                 $this->conec->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $sentencia ->bindParam(':name', $name);
                 $sentencia ->bindParam(':logSourceType', $logSourceType);
+                $sentencia ->bindParam(':protocolType', $protocolType);
+                $sentencia ->bindParam(':extension', $extension);
+                $sentencia ->bindParam(':targeteventcollector', $targeteventcollector);
                 $sentencia ->bindParam(':creationDate', $creationDate);
-                $sentencia ->bindParam(':LastEvent', $LastEvent);
-                $sentencia ->bindParam(':Enabled', $Enabled);
+                $sentencia ->bindParam(':lastEvent', $lastEvent);
+                $sentencia ->bindParam(':enabled', $enabled);
 
                 //$sentencia ->bindParam(':nVuelo', $numVue);
                 //Ejecuta una sentencia preparada 
