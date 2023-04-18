@@ -69,7 +69,7 @@
             $conec = new Log(); // esta es la conexión
             //Comprobamos que el id sea nuérico y que el nombre y el tipo sea unos determinados. 
 
-            $add= $conec ->saveLog($_SESSION['id'], $_SESSION['name'], $_SESSION['type'], $_SESSION['protocol'],$_SESSION['extension'],$_SESSION['targeteventcollector'],$_SESSION['creationDate'],$_SESSION['last'], $_SESSION['enabled']);
+            $add= $conec ->saveLog($_SESSION['id'], $_SESSION['name'], $_SESSION['type'],$_SESSION['extension'],$_SESSION['creationDate'],$_SESSION['last'], $_SESSION['enabled']);
             //Chequeamos que se ha añadido correctamente
             if($add){
                  //Guardamos un mensaje y el color del mensaje para utilizarlo con bootstrap
@@ -84,9 +84,9 @@
             }
         }
         //AÑADIMOS LOG
-        static function edit($name,$logSourceType,$protocolType,$extension,$targeteventcollector,$creationDate,$lastEvent,$enabled,$logAeditar){
+        static function edit($name,$logSourceType,$extension,$creationDate,$lastEvent,$enabled,$logAeditar){
             $conec = new Log(); // esta es la conexión
-            $edit= $conec ->editLog($name,$logSourceType,$protocolType,$extension,$targeteventcollector,$creationDate,$lastEvent,$enabled,$logAeditar);
+            $edit= $conec ->editLog($name,$logSourceType,$extension,$creationDate,$lastEvent,$enabled,$logAeditar);
             //Chequeamos que se ha editado correctamente
             if($edit){
                 //Guardamos un mensaje y el color del mensaje para utilizarlo con bootstrap

@@ -20,12 +20,7 @@
         }else if($_POST['type']=='Log Source Type'){
                 $_SESSION['message'] = 'Log No añadido -- Tienen que seleccionar un campo de la lista Log Source Type';
                 $_SESSION['message_type'] = 'danger';
-        }else if($_POST['protocol']=='Protocol Type'){
-                $_SESSION['message'] = 'Log No añadido -- Tienen que seleccionar un campo de la lista Protocol Type';
-                $_SESSION['message_type'] = 'danger';
-        }else if($_POST['targeteventcollector']=='targeteventcollector'){
-                $_SESSION['message'] = 'Log No añadido -- Tienen que seleccionar un campo de la lista Target Event Collector';
-                $_SESSION['message_type'] = 'danger';
+        
               
          //No se chequea extension ni las fechas ni enabled
         }else {
@@ -112,15 +107,13 @@
         $logAeditar=$_SESSION['id'];
         $name= $_POST['name'];
         $logSourceType= $_POST['type'];
-        $protocolType= $_POST['protocol'];
         $extension= $_POST['extension'];
-        $targeteventcollector= $_POST['targeteventcollector'];
         $lastEvent =$_POST['last'];
         $enabled =$_POST['enabled'];
         $metodo = 'edit';
         if(method_exists("logController",$metodo)):
             
-        logController::{$metodo}($name,$logSourceType,$protocolType,$extension,$targeteventcollector,$creationDate,$lastEvent,$enabled,$logAeditar);
+        logController::{$metodo}($name,$logSourceType,$extension,$creationDate,$lastEvent,$enabled,$logAeditar);
 
         endif;
         

@@ -94,33 +94,38 @@ require "layout/header.php"
                         <i class="fa fa-filter"></i>
                     </div>
                     <div class="search col-sm-10">
-                        <form action="addLog.php" method="POST" class="d-flex">
-                            <i class="fas fa-search"></i>
-                            <input class="form-control me-2 border-2 border-primary w-75" type="search" placeholder=" Search by name, description or log source indentifier" aria-label="Search">
-                            <button class="btn text-white bg-primary" type="submit" name="addLog"  value="Add new Log">+ New Log source</button>
-                            <button class="btn text-dark bg-primary" type="submit" name="addLog"  value="Add new Log"><i class="fas fa-caret-down"></i></button>
-                        </form>
+                        <div class="float-start w-75">
+                            <form action="" method="POST" >
+                                <i class="fas fa-search"></i>
+                                <input class="form-control me-2 border-bottom border-2 border-primary " type="text" placeholder=" Search by name, description or log source indentifier" aria-label="Search" name="busqueda">
+                            </form>
+                        </div>
+                        <div class="float-end d-grid gap-2">
+                            <form action="addLog.php" method="POST" >
+                                <button class="btn text-white bg-primary rounded-0 p-3" type="submit" name="addLog"  value="Add new Log">+ New Log source</button>
+                                <button class="btn text-dark bg-primary rounded-0 p-3" type="submit" name="addLog"  value="Add new Log"><i class="fas fa-caret-down"></i></button>
+                            </form>
+                        </div>
+                        
                     </div>
                 </div>
-                <div class="row encabezado">
-                    <h3 class="fs-4 col-sm-10">Log Sources </h3>
-                    <i class="fas fa-cog col-sm-2"></i>
+                <div class="row encabezado col-sm-12">
+                    <h3 class="fs-4 col-sm-10 float-start">Log Sources </h3>
+                    <i class="fas fa-cog col-sm-2 float-end"></i>
                 </div>
                                 
                 <!-- FORMULARIO envio de nuevo vuelo mediante post -->
                 <div class="table-responsive col-11 tabla-logs" >
                     <table class="table table-bordered table-hover" >
                         <!-- CABECERA -->
-                        <thead class="table-secondary  text-black">
+                        <thead class="table-secondary  text-black sticky-top">
                             <!-- Título -->
                             <tr>
-                                <th><input type="checkbox"></th>
+                                <th class="check"><input type="checkbox"></th>
                                 <th>ID</th>
                                 <th>Name</th>
                                 <th>Log Source Type</th>
-                                <th>Protocol Type</th>
                                 <th>Extension</th>
-                                <th>Target Event Collector</th>
                                 <th>Creation Date</th> 
                                 <th>Last Event</th>
                                 <th>Enabled</th>
@@ -132,12 +137,20 @@ require "layout/header.php"
                                 #Pedimos todos los datos de la tabla
                                 //Accedemos al controlador
                                 require_once("../controlador/controlador.php");
+                                if(isset($_POST['busqueda'])){
+                                    $datoMuestra = $_POST['busqueda'];
+                                    $tabla= "x";
+                                    unset($_POST['busqueda']);
+                                }else{
+                                    $tabla="";
+                                    $datoMuestra ="";
+                                }
                                 $metodo = 'muestro';
                                 // Generamos una variable vacía para la llamada a la función muestroDatos y muestre todos los datos de la tabla
-                                $vacio="";
+                                //$vacio="";
                                 if(method_exists("logController",$metodo)):
                                     //llamámos al método
-                                    $results=logController::{$metodo}($vacio,$vacio);
+                                    $results=logController::{$metodo}($tabla,$datoMuestra);
 
                                 // $results tiene todas los logs guardads, Con el foreach los recorremos para poder pintarlos
                                 // Con el primer bucle foreach obtenemos el valor de las key del array multidimensional $results
@@ -150,9 +163,9 @@ require "layout/header.php"
                                     <td><?php echo $result['id'] ?></td>
                                     <td><?php echo $result['name']?></td>
                                     <td><?php echo $result['logSourceType']?></td>
-                                    <td><?php echo $result['protocolType']?></td>
+                                    
                                     <td><?php echo $result['extension']?></td>
-                                    <td><?php echo $result['targeteventcollector']?></td>
+                                    
                                     <td><?php echo $result['creationDate']?></td>
                                     <td><?php echo $result['lastEvent']?></td>
                                     

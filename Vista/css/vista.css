@@ -13,31 +13,16 @@ body{
     height: fit-content;
     width: fit-content;
 }
-/* Fijar Cabecera tabla*/
+/*Menu vertical*/
+.verticalmenu {
+    margin-top: 15px;
+    height: 680px;
+    overflow-y: scroll;
+}
 .tabla-logs {
-    max-height: 300px;
-    overflow: auto;
-    border: 1px solid;
-    display: inline-block;
+    height: 550px;
 }
-
-.tabla-logs > table {
-    position: relative;
-}
-
-.tabla-logs > thead >  tr > th {
-    position: sticky;
-    top: 0;
-    background: white;
-    z-index: 1;
-    border-bottom: 2px solid;
-background-color: yellow;
-}
-
-th,
-td {
-    padding: 1rem;
-}
+/* Fijar Cabecera tabla*/
 
 /*Posicionar icono lupa dentro del placeholder*/
 div.search{
@@ -57,14 +42,7 @@ i.fa-search {
     align-items: center;
 }
 
-.verticalmenu {
-    margin-top: 15px;
-    height: 680px;
-    overflow-y: scroll;
-}
-.tabla-logs{
-    height: 550px;
-}
+
 @media screen and (max-width: 900px) {
     .verticalmenu {
         display: none;

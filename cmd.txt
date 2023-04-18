@@ -5,24 +5,25 @@ create database pro_tfg;
 
 CREATE TABLE `usuarios` (
 `usu` int (8) NOT NULL,
-`pass` varchar(12) NOT NULL,
+`pass` varchar(10) NOT NULL,
 PRIMARY KEY (`usu`)
 );
 
 insert into usuarios values 
-('556699', 'jKolP'),
-('999444', 'LmOP2'),
-('633224', '345LT'),
-('789654', 'pappei'),
-('578964', 'loloppp');
+('556699',MD5('928c33e0ef')),
+('999444', MD5('30ad35dca9')),
+('633224', MD5('81ed348746')),
+('789654', MD5('3d4bd7c206')),
+('578964', MD5('f1e7783ee2'));
+
+
+
 
 CREATE TABLE `logs` (
 `id` int(5) NOT NULL,
-`name` varchar(15) NOT NULL,
-`logSourceType` varchar(15) NOT NULL,
-`protocolType` varchar(15) NOT NULL,
-`extension` varchar(15) NOT NULL,
-`targeteventcollector` varchar(15) NOT NULL,
+`name` varchar(25) NOT NULL,
+`logSourceType` varchar(25) NOT NULL,
+`extension` varchar(25) NOT NULL,
 `creationDate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ,
 `lastEvent` DATETIME NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP ,
 `enabled` BIT NOT NULL,
@@ -30,21 +31,21 @@ PRIMARY KEY (`id`)
 );
 
 insert into logs values
-('15272', 'A10@10.60.0.38','Custom A10 Networks','Syslog','IIS_ext','EC::142',NOW(),NOW()1),
-('24265', 'A10Neteork@192.168.244.31', 'Custom A10 Networks','JDBC','CheckPoint_ext','EC::165',NOW(),NOW(),1),
-('9732', 'ACK Alert @ Cerved CMGVS00CO2','ACK ALERT','OPSEC/LEA','KasperskyCloud_ext','EC::782',NOW(),NOW(),0),
-('9892', 'FortiGate@10.10.10.1', 'Fortinet FortiGate','Syslog','CrowdStrike_ext','EC::557',NOW(),NOW(),1),
-('9782', 'FortiGate@10.20.1.1', 'Fortinet','TLS Syslog','IIS_ext','EC::369',NOW(),NOW(),1),
-('7792', 'ACK ALERT@192.6.2.135', 'Cisco Meraki','OPSEC/LEA','F5APM_ext','EC::278',NOW(),NOW(),1),
-('24365', 'ACK ALERT@192.168.244.31', 'Aruba Mobility Controller','WinCollect','CustomTrend_ext','EC::461',NOW(),NOW(),0),
-('15637', 'LucartDNS@192.168.130.14', 'Cisco Aironet','JDBC','CrowdStrike_ext','EC::142',NOW(),NOW(),1),
-('18675', 'MWS@sv3330.logista.local', 'Microsoft Windows Security','JDBC','CustomTrend_ext','EC::278',NOW(),NOW(),0),
-('18272', 'A10@10.60.0.38','Custom A10 Networks','Syslog','CustomTrend_ext','EC::369',NOW(),NOW(),1),
-('74275', 'A10Neteork@192.168.244.31', 'Custom A10 Networks','JDBC','F5APM_ext','EC::782',NOW(),NOW(),1),
-('1732', 'ACK Alert @ Cerved CMGVS00CO2','ACK ALERT','OPSEC/LEA','CheckPoint_ext','EC::557',NOW(),NOW(),0),
-('6892', 'FortiGate@10.10.10.1', 'Fortinet FortiGate','Log File','KasperskyCloud_ext','EC::369',NOW(),NOW(),1),
-('5782', 'FortiGate@10.20.1.1', 'Fortinet FortiGate','JDBC','F5APM_ext','EC::461',NOW(),NOW(),1),
-('3792', 'ACK ALERT@192.6.2.135', 'Cisco Aironet','TLS Syslog','CheckPoint_ext','EC::165',NOW(),NOW(),1),
-('14265', 'ACK ALERT@192.168.244.31', 'Linux OS','OPSEC/LEA','FreeRADIUS_ext','EC::142',NOW(),NOW(),0),
-('65637', 'LucartDNS@192.168.130.14', 'SIM Generic','Syslog','FreeRADIUS_ext','EC::523',NOW(),NOW(),0,1),
-('78675', 'MWS@sv3330.logista.local', 'Microsoft Windows Security','OPSEC/LEA','IIS_ext','EC::369',NOW(),NOW(),0);
+('15272', 'A10@10.60.0.38','Custom A10 Networks','IIS_ext',NOW(),NOW(),1),
+('24265', 'A10Neteork@192.168.244.31', 'Custom A10 Networks','CheckPoint_ext',NOW(),NOW(),1),
+('9732', 'ACK Alert @ Cerved','ACK ALERT','KasperskyCloud_ext',NOW(),NOW(),0),
+('9892', 'FortiGate@10.10.10.1', 'Fortinet FortiGate','CrowdStrike_ext',NOW(),NOW(),1),
+('9782', 'FortiGate@10.20.1.1', 'Fortinet','IIS_ext',NOW(),NOW(),1),
+('7792', 'ACK ALERT@192.6.2.135', 'Cisco Meraki','F5APM_ext',NOW(),NOW(),1),
+('24365', 'ACK ALERT@192.168.244.31', 'Aruba Mobility Controller','CustomTrend_ext',NOW(),NOW(),0),
+('15637', 'LucartDNS@192.168.130.14', 'Cisco Aironet','CrowdStrike_ext',NOW(),NOW(),1),
+('18675', 'MWS@sv3330.logista.local', 'Microsoft Windows Security','CustomTrend_ext',NOW(),NOW(),0),
+('18272', 'A10@10.60.0.38','Custom A10 Networks','CustomTrend_ext',NOW(),NOW(),1),
+('74275', 'A10Neteork@192.168.244.31', 'Custom A10 Networks','F5APM_ext',NOW(),NOW(),1),
+('1732', 'ACK Alert @ Cerved','ACK ALERT','CheckPoint_ext',NOW(),NOW(),0),
+('6892', 'FortiGate@10.10.10.1', 'Fortinet FortiGate','KasperskyCloud_ext',NOW(),NOW(),1),
+('5782', 'FortiGate@10.20.1.1', 'Fortinet FortiGate','F5APM_ext',NOW(),NOW(),1),
+('3792', 'ACK ALERT@192.6.2.135', 'Cisco Aironet','CheckPoint_ext',NOW(),NOW(),1),
+('14265', 'ACK ALERT@192.168.244.31', 'Linux OS','FreeRADIUS_ext',NOW(),NOW(),0),
+('65637', 'LucartDNS@192.168.130.14', 'SIM Generic','FreeRADIUS_ext',NOW(),NOW(),0),
+('78675', 'MWS@sv3330.logista.local', 'Microsoft Windows Security','IIS_ext',NOW(),NOW(),0);

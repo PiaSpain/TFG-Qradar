@@ -48,7 +48,7 @@
                                         <label for="name">name</label>
                                         <option value="<?php echo $result['name'] ?>"><?php echo $result['name'] ?></option>
                                         <option value="A10@10.60.0.38">A10@10.60.0.38</option>
-                                        <option value="ACK Alert @ Cerved CMGVS00CO2">ACK Alert @ Cerved CMGVS00CO2</option>
+                                        <option value="ACK Alert @ Cerved">ACK Alert @ Cerved</option>
                                         <option value="FortiGate@10.10.10.1">FortiGate@10.10.10.1</option>
                                         <option value="LucartDNS@192.168.130.14">LucartDNS@192.168.130.14</option>
                                         <option value="ACK ALERT@192.168.244.31">ACK ALERT@192.168.244.31</option>
@@ -73,24 +73,13 @@
                                 </td>
                         </tr>
                         <tr>
-                                <th>Protocol Type</th>
-                                <th>Extension</th>
-                                <th>Targer Event Collector</th>
-                            </tr>
-                             <tr>
-                                <td> <select name="protocol" id="protocol">
-                                        <label for="protocol">Protocol Type</label>
-                                        <option value="<?php echo $result['protocolType'] ?>"><?php echo $result['protocolType'] ?></option>
-                                        <option value="Syslog">Syslog</option>
-                                        <option value="WinCollect">WinCollect</option>
-                                        <option value="Log File">Log File</option>
-                                        <option value="JDBC">JDBC</option>
-                                        <option value="WinCollect Microsoft">WinCollect Microsoft</option>
-                                        <option value="OPSEC/LEA">OPSEC/LEA</option>
-                                        <option value="TLS Syslog">TLS Syslog</option>
-                                    </select>
-                                </td> 
-                                <td> <select name="extension" id="extension">
+                            <th>Extension</th>
+                            <th>Creation Date</th> 
+                            <th>Last Event</th> 
+                            <th>Enabled</th> 
+                        </tr>
+                        <tr>
+                            <td> <select name="extension" id="extension">
                                         <label for="extension">Extension</label>
                                         <option value="<?php echo $result['extension'] ?>"><?php echo $result['extension'] ?></option>
                                         <option value="none">None</option>
@@ -102,29 +91,7 @@
                                         <option value="CustomTrend_ext">CustomTrend_ext</option>
                                         <option value="KasperskyCloud_ext">KasperskyCloud_ext</option>
                                     </select>
-                                </td>
-                                <td> <select name="targeteventcollector" id="targeteventcollector">
-                                        <label for="targeteventcollector">Target Event Collector</label>
-                                        <option value="<?php echo $result['targeteventcollector'] ?>"><?php echo $result['targeteventcollector'] ?></option>
-                                        <option value="EC::142">EC::142</option>
-                                        <option value="EC::165">EC::782</option>
-                                        <option value="EC::523">EC::523</option>
-                                        <option value="EC::461">EC::461</option>
-                                        <option value="EC::917">EC::917</option>
-                                        <option value="EC::278">EC::278</option>
-                                        <option value="EC::557">EC::557</option>
-                                        <option value="EC::369">EC::369</option>
-                                        <option value="EC::354">EC::354</option>
-                                        <option value="EC::862">EC::862</option>
-                                    </select>
-                                </td>
-                            </tr>
-                        <tr>
-                            <th>Creation Date</th> 
-                            <th>Last Event</th> 
-                            <th>Enabled</th> 
-                        </tr>
-                        <tr>
+                            </td>
                             <td> <input type="datetime" name="creationDate" placeholder="<?php echo$result['creationDate']?> "readonly="readonly"> </td>
                             <td> <input type="datetime" name="last" placeholder="<?php echo $result['lastEvent'] ?>" value="<?php echo date("Y-m-d H:i:s");?>"  readonly="readonly"> </td>
                              <?php if ($result['enabled']){?>
