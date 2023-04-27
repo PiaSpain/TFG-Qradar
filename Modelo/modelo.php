@@ -31,11 +31,12 @@
         public function ComprueboUsu($tabla,$campo1, $dato1,$campo2,$dato2){
             try {
                 //prepara la consulta SQL
-                $sentencia ="select * from ".$tabla." where ".$campo1."='$dato1'"." and ".$campo2."='$dato2'";
-
+                $buscoUsu ="select * from ".$tabla." where ".$campo1."='$dato1'";
+                //$hash="";
+                
                 //ejecutamos una query para comprobar si el dato se encuentra en la bbdd
                 
-                $sql = $this->conec->query($sentencia);
+                $sql = $this->conec->query($buscoUsu);
                 // captamos los posibles errores
                 $this->conec->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 //ejecutamos la consulta sql
@@ -43,7 +44,32 @@
                 //Contamos el número de flas devueltas en la consulta sql
                 $total =$sql->rowCount();
                 if($total ==1){
-                    //Si devuelve una fila el dato se encuentra en la bbddd
+                    /*
+                    $hashed_password = crypt($dato2,$salt);
+                    if (hash_equals($hashed_password, crypt($dato2, $hashed_password))) {
+                        return true;
+                    }else{
+                        return false;
+                    }
+                    */
+                    /*
+                    $datos = $this->conec->query($buscoUsu);
+                    while($filas = $datos->FETCHALL(PDO::FETCH_ASSOC)) {
+                        #retorna un objeto que lo pasamos a un array
+                        $this->datos[]=$filas;
+                    }
+                    //Recorremos todos los datos obtenido de la consulta y lo almacenamos en un array a través de un bucle while
+                    // PDO::FETCH_ASSOC: devuelve un array indexado por los nombres de las columnas del conjunto de resultados.
+                    foreach ($datos as $key => $dato)
+                    foreach($dato as $result) {
+                        $hash=$result['pass'];
+                    }
+                    if(password_verify($dato2, $hash)){
+                        return true;
+                    }else{
+                        return false;
+                    }
+                    */
                     return true;
                 }else{
                     return false;
@@ -51,6 +77,29 @@
               } catch (PDOException  $e) {
                 echo "<h3>Failed: </h3>" ."<h3>". $e->getMessage()."</h3>";
               }
+        }
+        public function NewUsu($tabla,$campo1, $dato1,$campo2,$dato2){
+            try{
+                //Generamos una contraseña encriptada
+                $pass_fuerte = password_hash($dato2,PASSWORD_DEFAULT);
+                //prepara la consulta SQL
+                $insertNew ="insert into ".$tabla."(".$campo1.",".$campo2.") values ('$dato1','$pass_fuerte')";
+                $sql = $this->conec->prepare($insertNew);
+                // captamos los posibles errores
+                $this->conec->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                //ejecutamos la consulta sql
+                $sql->execute();
+                //Contamos el número de flas devueltas en la consulta sql
+                $total =$sql->rowCount();
+                if($total ==1){
+                    //Si devuelve una fila el usu se ha add a la bbddd 
+                    return true;    
+                }else{
+                    return false;
+                }
+            }catch (PDOException  $e) {
+                echo "<h3>Failed: </h3>" ."<h3>". $e->getMessage()."</h3>";
+            }
         }
         public function ComprueboDato($tabla,$campo, $dato){
             try { 

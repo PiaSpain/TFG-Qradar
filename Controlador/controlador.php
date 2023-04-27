@@ -13,10 +13,10 @@
         static function existe(){
             $conec = new Log(); // esta es la conexión
             #Extraemos datos
-            #el método ComprueboDato sale del require_once("./Modelo/modelo.php");
-            #el método ComprueboDato tiene tres parámetros $tabla, $campo y $dato
+            #el método ComprueboUsu sale del require_once("./Modelo/modelo.php");
+            #el método ComprueboUsu tiene tres parámetros $tabla, $campo y $dato
             $usuExit= $conec ->ComprueboUsu($_SESSION['tabla'],'usu', $_SESSION['usu'],'pass', $_SESSION['pass']);
-            //$passTru= $conec ->ComprueboDato($_SESSION['tabla'],'pass', $_SESSION['pass']);
+            //$passTru= $conec ->ComprueboUsu($_SESSION['tabla'],'pass', $_SESSION['pass']);
             //&& $passTru
             if($usuExit ){
             //Datos correctos accedemos a la app
@@ -31,6 +31,23 @@
                 echo '</script>';
                 //echo "<h3>AlGÚN DATO NO ES CORRECTO</h3>";
                 header ("Location:../index.html");
+            }
+        }
+        // CREO NUEO USUARIO
+        static function nuevoUsu(){
+            $conec = new Log(); // esta es la conexión
+            $queryregistrar= $conec ->NewUsu($_SESSION['tabla'],'usu', $_SESSION['usu'],'pass', $_SESSION['pass']); 
+            
+            if($queryregistrar){
+                echo '<script type="text/javascript">';
+                echo ' alert("Usuario Registrado Correctamente")';  //not showing an alert box.
+                echo '</script>';
+                //header ("Location:../index.html");    
+            }else{
+                echo '<script type="text/javascript">';
+                echo ' alert("Fallo al insertar nuevo usuario")';  //not showing an alert box.
+                echo '</script>';
+                //header ("Location:../index.html");
             }
         }
 

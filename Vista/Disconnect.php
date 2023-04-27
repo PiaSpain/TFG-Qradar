@@ -8,7 +8,7 @@ require "layout/header.php"
             <a href="app.php"><img src="./css/app.png" alt=""></a>
             </div>
             <div class="border border-secondary mt-5 mb-4">
-            <a href="Disconnect.php"><img src="./css/noway.png" alt=""></a>
+            <a href="#"><img src="./css/wrongway.png" alt=""></a>
             </div>
         </div>
         <div class="mx-auto" style="width: 200px;">

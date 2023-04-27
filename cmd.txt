@@ -4,7 +4,7 @@ mysql -u root -p
 create database pro_tfg;
 
 CREATE TABLE `usuarios` (
-`usu` int (8) NOT NULL,
+`usu` int (6) NOT NULL,
 `pass` varchar(10) NOT NULL,
 PRIMARY KEY (`usu`)
 );
