@@ -43,34 +43,18 @@
                 $sql->execute();
                 //Contamos el número de flas devueltas en la consulta sql
                 $total =$sql->rowCount();
+                    
                 if($total ==1){
-                    /*
-                    $hashed_password = crypt($dato2,$salt);
-                    if (hash_equals($hashed_password, crypt($dato2, $hashed_password))) {
+                    
+                    $fila = $sql->fetch(PDO::FETCH_ASSOC);
+                        $passwordHas = $fila['pass'];
+                        //$fila['pass']= $passwordHas;
+                    if(password_verify($dato2, $passwordHas)){
                         return true;
                     }else{
                         return false;
                     }
-                    */
-                    /*
-                    $datos = $this->conec->query($buscoUsu);
-                    while($filas = $datos->FETCHALL(PDO::FETCH_ASSOC)) {
-                        #retorna un objeto que lo pasamos a un array
-                        $this->datos[]=$filas;
-                    }
-                    //Recorremos todos los datos obtenido de la consulta y lo almacenamos en un array a través de un bucle while
-                    // PDO::FETCH_ASSOC: devuelve un array indexado por los nombres de las columnas del conjunto de resultados.
-                    foreach ($datos as $key => $dato)
-                    foreach($dato as $result) {
-                        $hash=$result['pass'];
-                    }
-                    if(password_verify($dato2, $hash)){
-                        return true;
-                    }else{
-                        return false;
-                    }
-                    */
-                    return true;
+                    //return true;
                 }else{
                     return false;
                 }

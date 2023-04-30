@@ -5,19 +5,19 @@ create database pro_tfg;
 
 CREATE TABLE `usuarios` (
 `usu` int (6) NOT NULL,
-`pass` varchar(10) NOT NULL,
+`pass` varchar(70) NOT NULL,
 PRIMARY KEY (`usu`)
 );
 
 insert into usuarios values 
-('556699',MD5('928c33e0ef')),
-('999444', MD5('30ad35dca9')),
-('633224', MD5('81ed348746')),
-('789654', MD5('3d4bd7c206')),
-('578964', MD5('f1e7783ee2'));
+('11111',('$2y$10$aLKy5P8k3LIRLG7.RmPYW.kVktGWsYttaHnLgytAvq7Tu0egwV7PC')),
+('12456', ('$2y$10$7vpJlSEjEAW1vcdXvFjPy.PKMcwS12rOfJKZJaUytSqw1f/TF5zh6')),
+('888777', ('$2y$10$YHg996Bv1N.ubp9wYFzmAuSwG5Tr.YebQa4U8sDkAfyMSSonP4r9C'));
 
 
-
+11111 -> cba
+12456 -> abc
+888777 -> 1234
 
 CREATE TABLE `logs` (
 `id` int(5) NOT NULL,
