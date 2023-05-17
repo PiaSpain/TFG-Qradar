@@ -86,7 +86,7 @@
             $conec = new Log(); // esta es la conexión
             //Comprobamos que el id sea nuérico y que el nombre y el tipo sea unos determinados. 
 
-            $add= $conec ->saveLog($_SESSION['id'], $_SESSION['name'], $_SESSION['type'],$_SESSION['extension'],$_SESSION['creationDate'],$_SESSION['last'], $_SESSION['enabled']);
+            $add= $conec ->saveLog($_SESSION['id'],$_SESSION['name'],$_SESSION['type'],$_SESSION['extension'],$_SESSION['creationDate'],$_SESSION['last'],$_SESSION['enabled']);
             //Chequeamos que se ha añadido correctamente
             if($add){
                  //Guardamos un mensaje y el color del mensaje para utilizarlo con bootstrap

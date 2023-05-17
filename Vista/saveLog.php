@@ -28,15 +28,13 @@
             $_SESSION['id'] = $_POST['id'];
             $_SESSION['name']= $_POST['name'];
             $_SESSION['type']= $_POST['type'];
-            $_SESSION['protocol']= $_POST['protocol'];
             $_SESSION['extension']= $_POST['extension'];
-            $_SESSION['targeteventcollector']= $_POST['targeteventcollector'];
             $_SESSION['creationDate']= $_POST['creationDate'];
             $_SESSION['last']= $_POST['last'];
-            if (empty($_POST['enabled1'])){
-		        $_SESSION['enabled'] = '0';
+           if (empty($_POST['enabled1'])){
+		        $_SESSION['enabled'] = 0;
 	        }else{
-                 $_SESSION['enabled'] = '1';
+                $_SESSION['enabled'] = 1;
             }
 
            # $_SESSION['enabled']= $_POST['enabled'];
@@ -58,6 +56,7 @@
                 $_SESSION['message_type'] = 'danger';
 
                 }else{
+                   
                     $metodo = 'add';
                     if(method_exists("logController",$metodo)):
                     $logExit=logController::{$metodo}();

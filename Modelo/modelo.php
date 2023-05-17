@@ -150,7 +150,7 @@
             try {
                 //prepara la consulta SQL
                 $sentencia  = $this->conec -> prepare("insert into logs (id,name,logSourceType,extension,creationDate,lastEvent,enabled) 
-                values (:id,:name,:logSourceType,,:extension,:creationDate,:lastEvent,:enabled)");
+                values (:id,:name,:logSourceType,:extension,:creationDate,:lastEvent,:enabled)");
                 // captamos los posibles errores
                 $this->conec->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $sentencia ->bindParam(':id', $id);

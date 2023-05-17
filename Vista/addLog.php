@@ -71,7 +71,7 @@
                                 <td> <input type="datetime" name="last" value="<?php echo date("Y-m-d H:i:s");?>" readonly="readonly"> </td>
                                 <td>
                                     <div class="form-check form-switch">
-                                        <input class="form-check-input" type="checkbox" name="enabled1" value="1">
+                                        <input class="form-check-input" type="checkbox" name="enabled1" id="enabled1" value="1">
                                         <label class="form-check-label">ON</label>
                                     </div>
                                     <div class="form-check form-switch">

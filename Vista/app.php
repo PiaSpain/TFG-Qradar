@@ -91,7 +91,7 @@ require "layout/header.php"
             <div class="col-sm-10 Log-Source">
                 <div class="row ">
                     <div class="filter col-sm-1 bg-white border-1  text-center">
-                        <i class="fa fa-filter"></i>
+                        <a href="app.php" class="text-dark"><i class="fa fa-filter"></i></a>
                     </div>
                     <div class="search col-sm-10">
                         <div class="float-start w-75">
